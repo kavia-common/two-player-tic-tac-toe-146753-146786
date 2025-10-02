@@ -191,17 +191,35 @@
 }
 
 .piece {
+  display: inline-grid;
+  place-items: center;
+  line-height: 1;
   font-weight: 800;
-  font-size: clamp(38px, 10vw, 64px);
-  letter-spacing: 1px;
+  font-size: clamp(42px, 10vw, 68px);
+  letter-spacing: 0;
   color: #0f172a;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.9);
+  -webkit-text-stroke: 0.5px rgba(15, 23, 42, 0.25);
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.9),
+    0 8px 18px rgba(2,6,23,0.12);
+  transform: translateZ(0); /* improve rendering */
 }
+
+/* Knight (X) — ocean blue accent */
 .piece.x {
   color: var(--primary);
+  filter: drop-shadow(0 6px 14px rgba(37, 99, 235, 0.25));
 }
+
+/* Queen (O) — deep slate for contrast */
 .piece.o {
   color: #0f172a;
+  filter: drop-shadow(0 6px 14px rgba(2, 6, 23, 0.20));
+}
+
+/* Optional subtle hover emphasis when empty to hint interactivity */
+.square:not(.highlighted):hover .piece.empty {
+  opacity: 0.85;
 }
 
 /* Controls */

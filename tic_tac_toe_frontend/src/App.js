@@ -209,7 +209,7 @@ function Board({ squares, onClick, highlightLine }) {
             value={value}
             onClick={() => onClick(idx)}
             highlighted={highlighted}
-            ariaLabel={`Cell ${idx + 1} ${value ? `occupied by ${value}` : 'empty'}`}
+            ariaLabel={`Cell ${idx + 1} ${value ? `occupied by ${value === 'X' ? 'knight' : 'queen'}` : 'empty'}`}
           />
         );
       })}
@@ -227,8 +227,11 @@ function Square({ value, onClick, highlighted, ariaLabel }) {
       onClick={onClick}
       aria-label={ariaLabel}
     >
-      <span className={`piece ${value === 'X' ? 'x' : value === 'O' ? 'o' : 'empty'}`}>
-        {value}
+      <span
+        className={`piece ${value === 'X' ? 'x' : value === 'O' ? 'o' : 'empty'}`}
+        aria-hidden="true"
+      >
+        {value === 'X' ? '♘' : value === 'O' ? '♛' : ''}
       </span>
     </button>
   );
